@@ -17,15 +17,15 @@ public interface PythonParserListener extends ParseTreeListener {
 	 */
 	void exitProgram(PythonParserParser.ProgramContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PythonParserParser#endExpr}.
+	 * Enter a parse tree produced by {@link PythonParserParser#begin}.
 	 * @param ctx the parse tree
 	 */
-	void enterEndExpr(PythonParserParser.EndExprContext ctx);
+	void enterBegin(PythonParserParser.BeginContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link PythonParserParser#endExpr}.
+	 * Exit a parse tree produced by {@link PythonParserParser#begin}.
 	 * @param ctx the parse tree
 	 */
-	void exitEndExpr(PythonParserParser.EndExprContext ctx);
+	void exitBegin(PythonParserParser.BeginContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PythonParserParser#expr}.
 	 * @param ctx the parse tree
@@ -37,23 +37,73 @@ public interface PythonParserListener extends ParseTreeListener {
 	 */
 	void exitExpr(PythonParserParser.ExprContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PythonParserParser#arithmeticExpr}.
+	 * Enter a parse tree produced by {@link PythonParserParser#simple_expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterArithmeticExpr(PythonParserParser.ArithmeticExprContext ctx);
+	void enterSimple_expr(PythonParserParser.Simple_exprContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link PythonParserParser#arithmeticExpr}.
+	 * Exit a parse tree produced by {@link PythonParserParser#simple_expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitArithmeticExpr(PythonParserParser.ArithmeticExprContext ctx);
+	void exitSimple_expr(PythonParserParser.Simple_exprContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PythonParserParser#assignmentExpr}.
+	 * Enter a parse tree produced by {@link PythonParserParser#var_assign}.
 	 * @param ctx the parse tree
 	 */
-	void enterAssignmentExpr(PythonParserParser.AssignmentExprContext ctx);
+	void enterVar_assign(PythonParserParser.Var_assignContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link PythonParserParser#assignmentExpr}.
+	 * Exit a parse tree produced by {@link PythonParserParser#var_assign}.
 	 * @param ctx the parse tree
 	 */
-	void exitAssignmentExpr(PythonParserParser.AssignmentExprContext ctx);
+	void exitVar_assign(PythonParserParser.Var_assignContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PythonParserParser#operator_assign}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperator_assign(PythonParserParser.Operator_assignContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PythonParserParser#operator_assign}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperator_assign(PythonParserParser.Operator_assignContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PythonParserParser#operator}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperator(PythonParserParser.OperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PythonParserParser#operator}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperator(PythonParserParser.OperatorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PythonParserParser#op_equals}.
+	 * @param ctx the parse tree
+	 */
+	void enterOp_equals(PythonParserParser.Op_equalsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PythonParserParser#op_equals}.
+	 * @param ctx the parse tree
+	 */
+	void exitOp_equals(PythonParserParser.Op_equalsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PythonParserParser#vartype}.
+	 * @param ctx the parse tree
+	 */
+	void enterVartype(PythonParserParser.VartypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PythonParserParser#vartype}.
+	 * @param ctx the parse tree
+	 */
+	void exitVartype(PythonParserParser.VartypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PythonParserParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray(PythonParserParser.ArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PythonParserParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray(PythonParserParser.ArrayContext ctx);
 }

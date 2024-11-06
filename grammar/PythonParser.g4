@@ -1,29 +1,38 @@
 grammar PythonParser;
 
+program: (begin NEWLINE)* ;
+begin: expr | simple_expr;
 
-program:	'def main():'  expr  EOF;
 
-endExpr: expr '\t'|'\n' ;
+expr: var_assign | expr operator expr | vartype | VARNAME ;
+simple_expr:  expr operator expr | vartype | VARNAME; // This catches op assignments so no invalid syntax
 
-expr: assignmentExpr | assignmentExpr arithmeticExpr;
 
-arithmeticExpr: expr ('+' | '-' | '*' | '/' | '%') expr   
-    | VARNAME                                
-    | INT ;                                      
+// Assignment
+var_assign: VARNAME '=' expr ;
+operator_assign: VARNAME op_equals simple_expr;
 
-assignmentExpr: VARNAME ( '=' | '+=' | '-=' | '*=' | '/=' ) arithmeticExpr ;
+// Operations
+operator: ('+'|'-'|'*'|'/'|'%');
+op_equals: ('+='|'-='|'*='|'/='|'%=');
+
+
+// Data types
+
+vartype: INT | FLOAT| BOOL | STRING;
+array: '[' vartype (','vartype)* ']' ;
+
 
 INT:	[+-]?[0-9]+;
 FLOAT: [+-]?[0-9]*'.'[0-9]+;
-VARNAME: [+-]?[a-zA-Z_]+[a-zA-Z_0-9]*;
+BOOL: 'True'|'False';
+STRING: '"' [a-zA-Z_0-9]* '"' ;
 
+VARNAME: [a-zA-Z_]+[a-zA-Z_0-9]*;
 
-WS:	[ \t\r\n]+ -> skip;
+// Syntax
+NEWLINE: [\r\n]+;
+INDENT: '\t';
+WS : [ \t]+ -> skip ;
 
-
-/*
-This doesn't quite work, but I think the logic is at least close!
-1:10 token recognition error at: ':'
-5:6 token recognition error at: '+'
-1:0 mismatched input 'def' expecting 'def' 
-*/
+//Still some issues with whitespace, esp with +=
