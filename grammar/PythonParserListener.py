@@ -17,6 +17,15 @@ class PythonParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PythonParserParser#endl.
+    def enterEndl(self, ctx:PythonParserParser.EndlContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#endl.
+    def exitEndl(self, ctx:PythonParserParser.EndlContext):
+        pass
+
+
     # Enter a parse tree produced by PythonParserParser#begin.
     def enterBegin(self, ctx:PythonParserParser.BeginContext):
         pass

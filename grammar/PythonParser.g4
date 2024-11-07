@@ -1,7 +1,8 @@
 grammar PythonParser;
 
-program: (begin NEWLINE)* EOF;
+program: (begin NEWLINE)* endl ;
 
+endl: begin NEWLINE EOF | begin EOF | EOF;  // Handles last line of program
 
 begin: var_assign
         | operator_assign
