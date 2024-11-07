@@ -1,7 +1,7 @@
 grammar PythonParser;
 
 program: (begin NEWLINE)* EOF;
-// begin: expr | simple_expr;
+
 
 begin: var_assign
         | operator_assign
@@ -14,8 +14,7 @@ operator_assign: VARNAME op_equals expr;
 
 // Expressions
 expr: unit (operator unit)* ;
-// expr: var_assign | expr operator expr | vartype | VARNAME ;
-// simple_expr:  expr operator expr | vartype | VARNAME; // This catches op assignments so no invalid syntax
+
 
 // These are the basic components that can't be simplified
 unit: vartype
@@ -26,7 +25,7 @@ unit: vartype
 
 // Operations
 operator: ('+'|'-'|'*'|'/'|'%');
-op_equals: ('+='|'-='|'*='|'/='|'%=');
+op_equals: (PLUSEQ | MINUSEQ | MULTEQ | DIVEQ);
 
 
 // Data types
@@ -41,9 +40,14 @@ STRING: '"' .*? '"' ;
 CHAR: '\'' . '\'' ;
 VARNAME: [a-zA-Z_]+[a-zA-Z_0-9]*;
 
+//Define multi-character tokens
+PLUSEQ: '+=';
+MINUSEQ: '-=';
+MULTEQ: '*=';
+DIVEQ: '/=';
+
 // Syntax
 NEWLINE: [\r\n]+;
 INDENT: '\t';
 WS : [ \t]+ -> skip ;
 
-//Still some issues with whitespace, esp with +=

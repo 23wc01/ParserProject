@@ -26,24 +26,6 @@ class PythonParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PythonParserParser#expr.
-    def enterExpr(self, ctx:PythonParserParser.ExprContext):
-        pass
-
-    # Exit a parse tree produced by PythonParserParser#expr.
-    def exitExpr(self, ctx:PythonParserParser.ExprContext):
-        pass
-
-
-    # Enter a parse tree produced by PythonParserParser#simple_expr.
-    def enterSimple_expr(self, ctx:PythonParserParser.Simple_exprContext):
-        pass
-
-    # Exit a parse tree produced by PythonParserParser#simple_expr.
-    def exitSimple_expr(self, ctx:PythonParserParser.Simple_exprContext):
-        pass
-
-
     # Enter a parse tree produced by PythonParserParser#var_assign.
     def enterVar_assign(self, ctx:PythonParserParser.Var_assignContext):
         pass
@@ -59,6 +41,24 @@ class PythonParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by PythonParserParser#operator_assign.
     def exitOperator_assign(self, ctx:PythonParserParser.Operator_assignContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonParserParser#expr.
+    def enterExpr(self, ctx:PythonParserParser.ExprContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#expr.
+    def exitExpr(self, ctx:PythonParserParser.ExprContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonParserParser#unit.
+    def enterUnit(self, ctx:PythonParserParser.UnitContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#unit.
+    def exitUnit(self, ctx:PythonParserParser.UnitContext):
         pass
 
 

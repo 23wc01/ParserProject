@@ -1,4 +1,4 @@
-// Generated from PythonParser.G4 by ANTLR 4.13.2
+// Generated from PythonParser.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -17,8 +17,8 @@ public class PythonParserParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, INT=15, FLOAT=16, BOOL=17, 
-		STRING=18, CHAR=19, VARNAME=20, NEWLINE=21, INDENT=22, WS=23;
+		INT=10, FLOAT=11, BOOL=12, STRING=13, CHAR=14, VARNAME=15, PLUSEQ=16, 
+		MINUSEQ=17, MULTEQ=18, DIVEQ=19, NEWLINE=20, INDENT=21, WS=22;
 	public static final int
 		RULE_program = 0, RULE_begin = 1, RULE_var_assign = 2, RULE_operator_assign = 3, 
 		RULE_expr = 4, RULE_unit = 5, RULE_operator = 6, RULE_op_equals = 7, RULE_vartype = 8, 
@@ -33,16 +33,16 @@ public class PythonParserParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'='", "'+'", "'-'", "'*'", "'/'", "'%'", "'+='", "'-='", "'*='", 
-			"'/='", "'%='", "'['", "','", "']'", null, null, null, null, null, null, 
-			null, "'\\t'"
+			null, "'='", "'+'", "'-'", "'*'", "'/'", "'%'", "'['", "','", "']'", 
+			null, null, null, null, null, null, "'+='", "'-='", "'*='", "'/='", null, 
+			"'\\t'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, "INT", "FLOAT", "BOOL", "STRING", "CHAR", "VARNAME", 
+			null, null, null, null, null, null, null, null, null, null, "INT", "FLOAT", 
+			"BOOL", "STRING", "CHAR", "VARNAME", "PLUSEQ", "MINUSEQ", "MULTEQ", "DIVEQ", 
 			"NEWLINE", "INDENT", "WS"
 		};
 	}
@@ -81,7 +81,7 @@ public class PythonParserParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "PythonParser.G4"; }
+	public String getGrammarFileName() { return "PythonParser.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -134,7 +134,7 @@ public class PythonParserParser extends Parser {
 			setState(25);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2068480L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 64640L) != 0)) {
 				{
 				{
 				setState(20);
@@ -435,7 +435,7 @@ public class PythonParserParser extends Parser {
 				match(VARNAME);
 				}
 				break;
-			case T__11:
+			case T__6:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(54);
@@ -505,6 +505,10 @@ public class PythonParserParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Op_equalsContext extends ParserRuleContext {
+		public TerminalNode PLUSEQ() { return getToken(PythonParserParser.PLUSEQ, 0); }
+		public TerminalNode MINUSEQ() { return getToken(PythonParserParser.MINUSEQ, 0); }
+		public TerminalNode MULTEQ() { return getToken(PythonParserParser.MULTEQ, 0); }
+		public TerminalNode DIVEQ() { return getToken(PythonParserParser.DIVEQ, 0); }
 		public Op_equalsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -528,7 +532,7 @@ public class PythonParserParser extends Parser {
 			{
 			setState(59);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 3968L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 983040L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -579,7 +583,7 @@ public class PythonParserParser extends Parser {
 			{
 			setState(61);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 1015808L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 31744L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -630,17 +634,17 @@ public class PythonParserParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(63);
-			match(T__11);
+			match(T__6);
 			setState(64);
 			vartype();
 			setState(69);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__12) {
+			while (_la==T__7) {
 				{
 				{
 				setState(65);
-				match(T__12);
+				match(T__7);
 				setState(66);
 				vartype();
 				}
@@ -650,7 +654,7 @@ public class PythonParserParser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(72);
-			match(T__13);
+			match(T__8);
 			}
 		}
 		catch (RecognitionException re) {
@@ -665,7 +669,7 @@ public class PythonParserParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0017K\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\u0016K\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0001\u0000\u0001\u0000\u0001\u0000\u0005\u0000"+
@@ -677,13 +681,13 @@ public class PythonParserParser extends Parser {
 		"\u00058\b\u0005\u0001\u0006\u0001\u0006\u0001\u0007\u0001\u0007\u0001"+
 		"\b\u0001\b\u0001\t\u0001\t\u0001\t\u0001\t\u0005\tD\b\t\n\t\f\tG\t\t\u0001"+
 		"\t\u0001\t\u0001\t\u0000\u0000\n\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010"+
-		"\u0012\u0000\u0003\u0001\u0000\u0002\u0006\u0001\u0000\u0007\u000b\u0001"+
-		"\u0000\u000f\u0013G\u0000\u0019\u0001\u0000\u0000\u0000\u0002!\u0001\u0000"+
+		"\u0012\u0000\u0003\u0001\u0000\u0002\u0006\u0001\u0000\u0010\u0013\u0001"+
+		"\u0000\n\u000eG\u0000\u0019\u0001\u0000\u0000\u0000\u0002!\u0001\u0000"+
 		"\u0000\u0000\u0004#\u0001\u0000\u0000\u0000\u0006\'\u0001\u0000\u0000"+
 		"\u0000\b+\u0001\u0000\u0000\u0000\n7\u0001\u0000\u0000\u0000\f9\u0001"+
 		"\u0000\u0000\u0000\u000e;\u0001\u0000\u0000\u0000\u0010=\u0001\u0000\u0000"+
 		"\u0000\u0012?\u0001\u0000\u0000\u0000\u0014\u0015\u0003\u0002\u0001\u0000"+
-		"\u0015\u0016\u0005\u0015\u0000\u0000\u0016\u0018\u0001\u0000\u0000\u0000"+
+		"\u0015\u0016\u0005\u0014\u0000\u0000\u0016\u0018\u0001\u0000\u0000\u0000"+
 		"\u0017\u0014\u0001\u0000\u0000\u0000\u0018\u001b\u0001\u0000\u0000\u0000"+
 		"\u0019\u0017\u0001\u0000\u0000\u0000\u0019\u001a\u0001\u0000\u0000\u0000"+
 		"\u001a\u001c\u0001\u0000\u0000\u0000\u001b\u0019\u0001\u0000\u0000\u0000"+
@@ -691,21 +695,21 @@ public class PythonParserParser extends Parser {
 		"\u001e\"\u0003\u0004\u0002\u0000\u001f\"\u0003\u0006\u0003\u0000 \"\u0003"+
 		"\b\u0004\u0000!\u001e\u0001\u0000\u0000\u0000!\u001f\u0001\u0000\u0000"+
 		"\u0000! \u0001\u0000\u0000\u0000\"\u0003\u0001\u0000\u0000\u0000#$\u0005"+
-		"\u0014\u0000\u0000$%\u0005\u0001\u0000\u0000%&\u0003\b\u0004\u0000&\u0005"+
-		"\u0001\u0000\u0000\u0000\'(\u0005\u0014\u0000\u0000()\u0003\u000e\u0007"+
+		"\u000f\u0000\u0000$%\u0005\u0001\u0000\u0000%&\u0003\b\u0004\u0000&\u0005"+
+		"\u0001\u0000\u0000\u0000\'(\u0005\u000f\u0000\u0000()\u0003\u000e\u0007"+
 		"\u0000)*\u0003\b\u0004\u0000*\u0007\u0001\u0000\u0000\u0000+1\u0003\n"+
 		"\u0005\u0000,-\u0003\f\u0006\u0000-.\u0003\n\u0005\u0000.0\u0001\u0000"+
 		"\u0000\u0000/,\u0001\u0000\u0000\u000003\u0001\u0000\u0000\u00001/\u0001"+
 		"\u0000\u0000\u000012\u0001\u0000\u0000\u00002\t\u0001\u0000\u0000\u0000"+
-		"31\u0001\u0000\u0000\u000048\u0003\u0010\b\u000058\u0005\u0014\u0000\u0000"+
+		"31\u0001\u0000\u0000\u000048\u0003\u0010\b\u000058\u0005\u000f\u0000\u0000"+
 		"68\u0003\u0012\t\u000074\u0001\u0000\u0000\u000075\u0001\u0000\u0000\u0000"+
 		"76\u0001\u0000\u0000\u00008\u000b\u0001\u0000\u0000\u00009:\u0007\u0000"+
 		"\u0000\u0000:\r\u0001\u0000\u0000\u0000;<\u0007\u0001\u0000\u0000<\u000f"+
 		"\u0001\u0000\u0000\u0000=>\u0007\u0002\u0000\u0000>\u0011\u0001\u0000"+
-		"\u0000\u0000?@\u0005\f\u0000\u0000@E\u0003\u0010\b\u0000AB\u0005\r\u0000"+
-		"\u0000BD\u0003\u0010\b\u0000CA\u0001\u0000\u0000\u0000DG\u0001\u0000\u0000"+
-		"\u0000EC\u0001\u0000\u0000\u0000EF\u0001\u0000\u0000\u0000FH\u0001\u0000"+
-		"\u0000\u0000GE\u0001\u0000\u0000\u0000HI\u0005\u000e\u0000\u0000I\u0013"+
+		"\u0000\u0000?@\u0005\u0007\u0000\u0000@E\u0003\u0010\b\u0000AB\u0005\b"+
+		"\u0000\u0000BD\u0003\u0010\b\u0000CA\u0001\u0000\u0000\u0000DG\u0001\u0000"+
+		"\u0000\u0000EC\u0001\u0000\u0000\u0000EF\u0001\u0000\u0000\u0000FH\u0001"+
+		"\u0000\u0000\u0000GE\u0001\u0000\u0000\u0000HI\u0005\t\u0000\u0000I\u0013"+
 		"\u0001\u0000\u0000\u0000\u0005\u0019!17E";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());

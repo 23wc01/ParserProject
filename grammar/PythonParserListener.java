@@ -1,4 +1,4 @@
-// Generated from PythonParser.G4 by ANTLR 4.13.2
+// Generated from PythonParser.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
