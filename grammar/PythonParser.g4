@@ -31,7 +31,7 @@ op_equals: (PLUSEQ | MINUSEQ | MULTEQ | DIVEQ);
 
 // Data types
 vartype: INT | FLOAT| BOOL | STRING | CHAR;
-array: '[' vartype (',' vartype)* ']' ;
+array: '[' vartype? (',' vartype)* ']' ;
 
 // Primitives
 INT:	[+-]?[0-9]+;
