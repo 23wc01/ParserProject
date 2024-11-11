@@ -1,4 +1,4 @@
-grammar PythonParser;
+grammar Sample;
 
 program: (begin NEWLINE)* endl ;
 
@@ -7,11 +7,17 @@ endl: begin NEWLINE EOF | begin EOF | EOF;  // Handles last line of program
 begin: var_assign
         | operator_assign
         | expr
+        | conditional_statement
         ;
 
 // Assignment
 var_assign: VARNAME '=' expr ;
 operator_assign: VARNAME op_equals expr;
+
+// Conditional
+condition: expr op_compare expr; 
+conditional_statement: conditional condition ':' 
+        (NEWLINE INDENT)? begin;
 
 // Expressions
 expr: unit (operator unit)* ;
@@ -27,7 +33,7 @@ unit: vartype
 // Operations
 operator: ('+'|'-'|'*'|'/'|'%');
 op_equals: (PLUSEQ | MINUSEQ | MULTEQ | DIVEQ);
-
+op_compare: (GT | LT | GTE | LTE | EQ);
 
 // Data types
 vartype: INT | FLOAT| BOOL | STRING | CHAR;
@@ -47,8 +53,18 @@ MINUSEQ: '-=';
 MULTEQ: '*=';
 DIVEQ: '/=';
 
+GT: '>';
+GTE: '>=';
+LT: '<';
+LTE: '<=';
+EQ: '==';
+NEQ: '!='
+
+// Define conditionals
+conditionals = 'if' | 'elif' | 'else' 
+
+
 // Syntax
 NEWLINE: [\r\n]+;
 INDENT: '\t';
 WS : [ \t]+ -> skip ;
-
