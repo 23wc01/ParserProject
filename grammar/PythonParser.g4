@@ -9,6 +9,9 @@ begin: var_assign
         | expr
         | conditional_statement
         ;
+// Define conditionals
+conditional: 'if' | 'elif';
+ext_condition: 'and' | 'or';
 
 // Assignment
 var_assign: VARNAME '=' expr ;
@@ -16,8 +19,8 @@ operator_assign: VARNAME op_equals expr;
 
 // Conditional
 condition: expr op_compare expr; 
-conditional_statement: conditional condition ':' 
-        (NEWLINE INDENT)? begin;
+conditional_statement: conditional ('not')? condition (ext_condition condition)* ':'
+        ((NEWLINE INDENT begin)+ | 'pass') (NEWLINE 'else:' ((NEWLINE INDENT begin)+ | 'pass'))?;
 
 // Expressions
 expr: unit (operator unit)* ;
@@ -58,10 +61,8 @@ GTE: '>=';
 LT: '<';
 LTE: '<=';
 EQ: '==';
-NEQ: '!='
+NEQ: '!=';
 
-// Define conditionals
-conditionals = 'if' | 'elif' | 'else' 
 
 
 // Syntax

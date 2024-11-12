@@ -24,4 +24,3 @@ var3 = var2 % 2
 var4 = 1
 
 flag = True
-
