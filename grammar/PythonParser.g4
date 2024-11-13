@@ -1,4 +1,4 @@
-grammar Sample;
+grammar PythonParser;
 
 program: (begin NEWLINE)* endl ;
 
@@ -9,18 +9,31 @@ begin: var_assign
         | expr
         | conditional_statement
         ;
+
 // Define conditionals
-conditional: 'if' | 'elif';
-ext_condition: 'and' | 'or';
+IF: 'if';
+ELIF: 'elif'; 
+ELSE: 'else';
+
+// Boolean logic operators
+BINARY_LOGIC: 'and' | 'or';
+UNARY_LOGIC: 'not';
 
 // Assignment
 var_assign: VARNAME '=' expr ;
 operator_assign: VARNAME op_equals expr;
 
-// Conditional
-condition: expr op_compare expr; 
-conditional_statement: conditional ('not')? condition (ext_condition condition)* ':'
-        ((NEWLINE INDENT begin)+ | 'pass') (NEWLINE 'else:' ((NEWLINE INDENT begin)+ | 'pass'))?;
+// Conditional statement
+conditional_statement: IF condition ':' 
+    conditional_block
+    (NEWLINE ELIF condition ':' conditional_block)*
+    (NEWLINE ELSE ':' conditional_block)?;
+
+condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
+
+conditional_block: begin | (NEWLINE INDENT 
+                    begin)+;
+
 
 // Expressions
 expr: unit (operator unit)* ;
@@ -36,7 +49,7 @@ unit: vartype
 // Operations
 operator: ('+'|'-'|'*'|'/'|'%');
 op_equals: (PLUSEQ | MINUSEQ | MULTEQ | DIVEQ);
-op_compare: (GT | LT | GTE | LTE | EQ);
+op_compare: (GT | LT | GTE | LTE | EQ | NEQ);
 
 // Data types
 vartype: INT | FLOAT| BOOL | STRING | CHAR;
@@ -62,7 +75,6 @@ LT: '<';
 LTE: '<=';
 EQ: '==';
 NEQ: '!=';
-
 
 
 // Syntax
