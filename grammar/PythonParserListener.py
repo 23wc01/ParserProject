@@ -53,6 +53,33 @@ class PythonParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PythonParserParser#conditional_statement.
+    def enterConditional_statement(self, ctx:PythonParserParser.Conditional_statementContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#conditional_statement.
+    def exitConditional_statement(self, ctx:PythonParserParser.Conditional_statementContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonParserParser#condition.
+    def enterCondition(self, ctx:PythonParserParser.ConditionContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#condition.
+    def exitCondition(self, ctx:PythonParserParser.ConditionContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonParserParser#conditional_block.
+    def enterConditional_block(self, ctx:PythonParserParser.Conditional_blockContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#conditional_block.
+    def exitConditional_block(self, ctx:PythonParserParser.Conditional_blockContext):
+        pass
+
+
     # Enter a parse tree produced by PythonParserParser#expr.
     def enterExpr(self, ctx:PythonParserParser.ExprContext):
         pass
@@ -86,6 +113,15 @@ class PythonParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by PythonParserParser#op_equals.
     def exitOp_equals(self, ctx:PythonParserParser.Op_equalsContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonParserParser#op_compare.
+    def enterOp_compare(self, ctx:PythonParserParser.Op_compareContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#op_compare.
+    def exitOp_compare(self, ctx:PythonParserParser.Op_compareContext):
         pass
 
 

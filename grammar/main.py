@@ -21,7 +21,7 @@ def main(file_path):
     print(tree.toStringTree(recog=parser)) #Do we need to pass t=tree
 
 if __name__ == "__main__":
-    main("examples/del1.py")  # Replace with file being tested - examples folder
+    main("examples/del2.py")  # Replace with file being tested - examples folder
 
 """    
  if __name__ == "__main__":
