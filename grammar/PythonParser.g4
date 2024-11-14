@@ -19,6 +19,33 @@ ELSE: 'else';
 BINARY_LOGIC: 'and' | 'or';
 UNARY_LOGIC: 'not';
 
+// Primitives
+INT:	[+-]?[0-9]+;
+FLOAT: [+-]?[0-9]*'.'[0-9]+;
+BOOL: 'True' | 'False';
+STRING: '"' .*? '"' ;
+CHAR: '\'' . '\'' ;
+VARNAME: [a-zA-Z_]+[a-zA-Z_0-9]*;
+
+//Define multi-character tokens
+PLUSEQ: '+=';
+MINUSEQ: '-=';
+MULTEQ: '*=';
+DIVEQ: '/=';
+
+GT: '>';
+GTE: '>=';
+LT: '<';
+LTE: '<=';
+EQ: '==';
+NEQ: '!=';
+
+
+// Syntax
+NEWLINE: [\r\n]+;
+INDENT: '\t';
+WS : [ \t]+ -> skip ;
+
 // Assignment
 var_assign: VARNAME '=' expr ;
 operator_assign: VARNAME op_equals expr;
@@ -55,29 +82,4 @@ op_compare: (GT | LT | GTE | LTE | EQ | NEQ);
 vartype: INT | FLOAT| BOOL | STRING | CHAR;
 array: '[' vartype? (',' vartype)* ']' ;
 
-// Primitives
-INT:	[+-]?[0-9]+;
-FLOAT: [+-]?[0-9]*'.'[0-9]+;
-BOOL: 'True' | 'False';
-STRING: '"' .*? '"' ;
-CHAR: '\'' . '\'' ;
-VARNAME: [a-zA-Z_]+[a-zA-Z_0-9]*;
 
-//Define multi-character tokens
-PLUSEQ: '+=';
-MINUSEQ: '-=';
-MULTEQ: '*=';
-DIVEQ: '/=';
-
-GT: '>';
-GTE: '>=';
-LT: '<';
-LTE: '<=';
-EQ: '==';
-NEQ: '!=';
-
-
-// Syntax
-NEWLINE: [\r\n]+;
-INDENT: '\t';
-WS : [ \t]+ -> skip ;
