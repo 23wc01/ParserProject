@@ -63,7 +63,7 @@ conditional_block: begin | (NEWLINE INDENT
 
 
 // Expressions
-expr: unit (operator unit)* ;
+expr: unit | expr operator expr ;
 
 
 // These are the basic components that can't be simplified
