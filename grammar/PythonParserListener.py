@@ -62,6 +62,24 @@ class PythonParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PythonParserParser#while_statement.
+    def enterWhile_statement(self, ctx:PythonParserParser.While_statementContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#while_statement.
+    def exitWhile_statement(self, ctx:PythonParserParser.While_statementContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonParserParser#for_statement.
+    def enterFor_statement(self, ctx:PythonParserParser.For_statementContext):
+        pass
+
+    # Exit a parse tree produced by PythonParserParser#for_statement.
+    def exitFor_statement(self, ctx:PythonParserParser.For_statementContext):
+        pass
+
+
     # Enter a parse tree produced by PythonParserParser#condition.
     def enterCondition(self, ctx:PythonParserParser.ConditionContext):
         pass
@@ -71,12 +89,12 @@ class PythonParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PythonParserParser#conditional_block.
-    def enterConditional_block(self, ctx:PythonParserParser.Conditional_blockContext):
+    # Enter a parse tree produced by PythonParserParser#block.
+    def enterBlock(self, ctx:PythonParserParser.BlockContext):
         pass
 
-    # Exit a parse tree produced by PythonParserParser#conditional_block.
-    def exitConditional_block(self, ctx:PythonParserParser.Conditional_blockContext):
+    # Exit a parse tree produced by PythonParserParser#block.
+    def exitBlock(self, ctx:PythonParserParser.BlockContext):
         pass
 
 

@@ -8,6 +8,8 @@ begin: var_assign
         | operator_assign
         | expr
         | conditional_statement
+        | while_statement
+        | for_statement
         ;
 
 // Define conditionals
@@ -62,13 +64,21 @@ operator_assign: VARNAME op_equals expr;
 
 // Conditional statement
 conditional_statement: IF condition ':' 
-    conditional_block
-    (NEWLINE ELIF condition ':' conditional_block)*
-    (NEWLINE ELSE ':' conditional_block)?;
+    block
+    (NEWLINE ELIF condition ':' block)*
+    (NEWLINE ELSE ':' block)?;
+
+// While statement
+while_statement: WHILE condition ':'
+    NEWLINE* block;
+
+// For statement
+for_statement: FOR VARNAME IN expr ':' 
+    NEWLINE* block;
 
 condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
 
-conditional_block: begin | (NEWLINE INDENT 
+block: begin | (NEWLINE INDENT 
                     begin)+;
 
 
