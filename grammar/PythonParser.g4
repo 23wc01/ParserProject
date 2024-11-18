@@ -1,6 +1,6 @@
 grammar PythonParser;
 
-program: (begin NEWLINE)* endl ;
+program: (NEWLINE | begin NEWLINE)* endl ;
 
 endl: begin NEWLINE EOF | begin EOF | EOF;  // Handles last line of program
 
@@ -18,6 +18,11 @@ ELSE: 'else';
 // Boolean logic operators
 BINARY_LOGIC: 'and' | 'or';
 UNARY_LOGIC: 'not';
+
+// Loop Structures
+WHILE: 'while';
+FOR: 'for';
+IN: 'in';
 
 // Primitives
 INT:	[+-]?[0-9]+;
@@ -45,6 +50,11 @@ NEQ: '!=';
 NEWLINE: [\r\n]+;
 INDENT: '\t';
 WS : [ \t]+ -> skip ;
+
+// Comments
+COMMENT: '#' ~[\r\n]* -> skip;
+BLOCK_COMMENT: ('"""' .*? '"""' | '\'' '\'' '\'' .*? '\'' '\'' '\'') -> skip;
+
 
 // Assignment
 var_assign: VARNAME '=' expr ;
