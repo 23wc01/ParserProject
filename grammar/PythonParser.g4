@@ -1,5 +1,8 @@
 grammar PythonParser;
 
+
+
+
 program: (NEWLINE | begin NEWLINE)* endl ;
 
 endl: begin NEWLINE EOF | begin EOF | EOF;  // Handles last line of program
@@ -27,7 +30,7 @@ FOR: 'for';
 IN: 'in';
 
 // Primitives
-INT:	[+-]?[0-9]+;
+INT:    [+-]?[0-9]+;
 FLOAT: [+-]?[0-9]*'.'[0-9]+;
 BOOL: 'True' | 'False';
 STRING: '"' .*? '"' ;
@@ -51,14 +54,11 @@ NEQ: '!=';
 // Syntax
 NEWLINE: [\r\n]+;
 INDENT: '\t';
-WS : [ ]+ -> skip ;
+WS : [ \t]+ -> skip ;
 
 // Comments
 COMMENT: '#' ~[\r\n]* -> skip;
 BLOCK_COMMENT: ('"""' .*? '"""' | '\'' '\'' '\'' .*? '\'' '\'' '\'') -> skip;
-
-condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
-
 
 
 // Assignment
@@ -66,24 +66,40 @@ var_assign: VARNAME '=' expr ;
 operator_assign: VARNAME op_equals expr;
 
 // Conditional statement
-conditional_statement: IF condition ':' (expr | NEWLINE (block)+)
-    (NEWLINE ELIF condition ':' (NEWLINE)? (block)+)*
-    (NEWLINE ELSE ':' (NEWLINE)? (block)+)?;
+conditional_statement: IF condition ':' 
+    block
+    (NEWLINE ELIF condition ':' block)*
+    (NEWLINE ELSE ':' block)?;
 
 // While statement
 while_statement: WHILE condition ':'
-    (block | (NEWLINE block*)*);
+    block;
 
 // For statement
 for_statement: FOR VARNAME IN expr ':' 
-    NEWLINE* block;
+    block;
 
 
-block: INDENT+ (begin)? NEWLINE*;
+
+
+
+// Conditional statement
+conditional_statement: IF condition ':' 
+    block
+    (NEWLINE ELIF condition ':' block)*
+    (NEWLINE ELSE ':' block)?;
+
+condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
+
+conditional_block: begin | (NEWLINE INDENT 
+                    begin)+;
+
+
+block: begin | (NEWLINE* INDENT begin)+;
 
 
 // Expressions
-expr: unit | expr operator expr | func;
+expr: unit | expr operator expr |func;
 
 
 // These are the basic components that can't be simplified
@@ -104,4 +120,3 @@ array: '[' vartype? (',' vartype)* ']' ;
 
 // Function calls
 func: VARNAME '(' (vartype ',')* (vartype)? ')';
-
