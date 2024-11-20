@@ -65,12 +65,6 @@ BLOCK_COMMENT: ('"""' .*? '"""' | '\'' '\'' '\'' .*? '\'' '\'' '\'') -> skip;
 var_assign: VARNAME '=' expr ;
 operator_assign: VARNAME op_equals expr;
 
-// Conditional statement
-conditional_statement: IF condition ':' 
-    block
-    (NEWLINE ELIF condition ':' block)*
-    (NEWLINE ELSE ':' block)?;
-
 // While statement
 while_statement: WHILE condition ':'
     block;
@@ -78,9 +72,6 @@ while_statement: WHILE condition ':'
 // For statement
 for_statement: FOR VARNAME IN expr ':' 
     block;
-
-
-
 
 
 // Conditional statement
