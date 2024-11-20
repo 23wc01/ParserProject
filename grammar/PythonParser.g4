@@ -78,8 +78,7 @@ for_statement: FOR VARNAME IN expr ':'
 
 condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
 
-block: begin | (NEWLINE INDENT 
-                    begin)+;
+block: INDENT+ begin NEWLINE?;
 
 
 // Expressions
