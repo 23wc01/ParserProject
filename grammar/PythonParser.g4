@@ -52,6 +52,7 @@ NEQ: '!=';
 NEWLINE: [\r\n]+;
 INDENT: '\t';
 WS : [ \t]+ -> skip ;
+WS : [ ]+ -> skip ;
 
 // Comments
 COMMENT: '#' ~[\r\n]* -> skip;
@@ -66,16 +67,18 @@ operator_assign: VARNAME op_equals expr;
 conditional_statement: IF condition ':' (expr | NEWLINE (block)+)
     (NEWLINE ELIF condition ':' (NEWLINE)? (block)+)*
     (NEWLINE ELSE ':' (NEWLINE)? (block)+)?;
+    (NEWLINE (INDENT)* ELIF condition ':' (NEWLINE)? (block)+)*
+    (NEWLINE (INDENT)* ELSE ':' (NEWLINE)? (block)+)?;
 
 // While statement
 while_statement: WHILE condition ':'
     NEWLINE* block;
+    (NEWLINE block*)*;
 
 // For statement
 for_statement: FOR VARNAME IN expr ':' 
     NEWLINE* block;
 
-condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
 
 block: INDENT+ (begin)? NEWLINE*;
 
