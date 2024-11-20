@@ -82,9 +82,6 @@ conditional_statement: IF condition ':'
 
 condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
 
-conditional_block: begin | (NEWLINE INDENT 
-                    begin)+;
-
 
 block: begin | (NEWLINE* INDENT begin)+;
 
