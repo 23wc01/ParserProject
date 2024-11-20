@@ -51,12 +51,14 @@ NEQ: '!=';
 // Syntax
 NEWLINE: [\r\n]+;
 INDENT: '\t';
-WS : [ \t]+ -> skip ;
 WS : [ ]+ -> skip ;
 
 // Comments
 COMMENT: '#' ~[\r\n]* -> skip;
 BLOCK_COMMENT: ('"""' .*? '"""' | '\'' '\'' '\'' .*? '\'' '\'' '\'') -> skip;
+
+condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
+
 
 
 // Assignment
