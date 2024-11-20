@@ -81,7 +81,7 @@ block: INDENT+ (begin)? NEWLINE*;
 
 
 // Expressions
-expr: unit | expr operator expr ;
+expr: unit | expr operator expr | func;
 
 
 // These are the basic components that can't be simplified
@@ -100,4 +100,6 @@ op_compare: (GT | LT | GTE | LTE | EQ | NEQ);
 vartype: INT | FLOAT| BOOL | STRING | CHAR;
 array: '[' vartype? (',' vartype)* ']' ;
 
+// Function calls
+func: VARNAME '(' (vartype ',')* (vartype)? ')';
 
