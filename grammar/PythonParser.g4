@@ -67,13 +67,10 @@ operator_assign: VARNAME op_equals expr;
 conditional_statement: IF condition ':' (expr | NEWLINE (block)+)
     (NEWLINE ELIF condition ':' (NEWLINE)? (block)+)*
     (NEWLINE ELSE ':' (NEWLINE)? (block)+)?;
-    (NEWLINE (INDENT)* ELIF condition ':' (NEWLINE)? (block)+)*
-    (NEWLINE (INDENT)* ELSE ':' (NEWLINE)? (block)+)?;
 
 // While statement
 while_statement: WHILE condition ':'
-    NEWLINE* block;
-    (NEWLINE block*)*;
+    (block | (NEWLINE block*)*);
 
 // For statement
 for_statement: FOR VARNAME IN expr ':' 
