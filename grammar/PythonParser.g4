@@ -1,4 +1,4 @@
-grammar Sample;
+grammar PythonParser;
 
 program: (NEWLINE | begin NEWLINE)* endl ;
 
