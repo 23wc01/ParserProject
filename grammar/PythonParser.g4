@@ -1,4 +1,4 @@
-grammar PythonParser;
+grammar Sample;
 
 program: (NEWLINE | begin NEWLINE)* endl ;
 
@@ -63,10 +63,9 @@ var_assign: VARNAME '=' expr ;
 operator_assign: VARNAME op_equals expr;
 
 // Conditional statement
-conditional_statement: IF condition ':' 
-    block
-    (NEWLINE ELIF condition ':' block)*
-    (NEWLINE ELSE ':' block)?;
+conditional_statement: IF condition ':' (expr | NEWLINE (block)+)
+    (NEWLINE ELIF condition ':' (NEWLINE)? (block)+)*
+    (NEWLINE ELSE ':' (NEWLINE)? (block)+)?;
 
 // While statement
 while_statement: WHILE condition ':'
@@ -78,7 +77,7 @@ for_statement: FOR VARNAME IN expr ':'
 
 condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
 
-block: INDENT+ begin NEWLINE?;
+block: INDENT+ (begin)? NEWLINE*;
 
 
 // Expressions
