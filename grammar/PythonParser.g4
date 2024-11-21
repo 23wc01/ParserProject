@@ -1,4 +1,4 @@
-grammar PythonParser;
+grammar Sample;
 
 
 
@@ -54,7 +54,7 @@ NEQ: '!=';
 // Syntax
 NEWLINE: [\r\n]+;
 INDENT: '\t';
-WS : [ \t]+ -> skip ;
+WS : [ ]+ -> skip ;
 
 // Comments
 COMMENT: '#' ~[\r\n]* -> skip;
@@ -67,23 +67,21 @@ operator_assign: VARNAME op_equals expr;
 
 // While statement
 while_statement: WHILE condition ':'
-    block;
+    (NEWLINE inner)*;
 
 // For statement
 for_statement: FOR VARNAME IN expr ':' 
-    block;
+    (NEWLINE inner)*;
 
 
 // Conditional statement
-conditional_statement: IF condition ':' 
-    block
-    (NEWLINE ELIF condition ':' block)*
-    (NEWLINE ELSE ':' block)?;
+conditional_statement: IF condition ':'
+    (NEWLINE inner)*
+    (INDENT* ELIF condition ':' (NEWLINE inner)*)*
+    (INDENT* ELSE ':' ((NEWLINE inner)*))?;
 
-condition: '('? (UNARY_LOGIC)? expr (op_compare expr)? ')'? (BINARY_LOGIC condition)*; 
+condition: '('? (UNARY_LOGIC)? expr (op_compare (UNARY_LOGIC)? expr)? ')'? (BINARY_LOGIC condition)*; 
 
-
-block: begin | (NEWLINE* INDENT begin)+;
 
 
 // Expressions
@@ -95,6 +93,12 @@ unit: vartype
     | VARNAME
     | array
     ;
+
+
+// Block statements
+
+inner: INDENT+ begin NEWLINE* ;
+
 
 
 // Operations
