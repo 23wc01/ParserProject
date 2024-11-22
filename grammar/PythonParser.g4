@@ -11,8 +11,7 @@ begin: var_assign
         | operator_assign
         | expr
         | conditional_statement
-        | while_statement
-        | for_statement
+        | outer
         ;
 
 // Define conditionals
@@ -53,7 +52,7 @@ NEQ: '!=';
 
 // Syntax
 NEWLINE: [\r\n]+;
-INDENT: '\t';
+INDENT: '\t'+;
 WS : [ ]+ -> skip ;
 
 // Comments
@@ -73,6 +72,7 @@ while_statement: WHILE condition ':'
 for_statement: FOR VARNAME IN expr ':' 
     (NEWLINE inner)*;
 
+outer: for_statement | while_statement | inner;
 
 // Conditional statement
 conditional_statement: IF condition ':'
