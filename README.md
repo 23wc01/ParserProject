@@ -26,7 +26,7 @@ If you'd like to try your own input file, you can create a new python file and w
 
 
 ## Project Demo
-[Demo Video - No link yet]()
+[Demo Video](https://youtu.be/-xDXDPQzH8I)
 
 ## Authors
 * Wen-Hsin Chen
