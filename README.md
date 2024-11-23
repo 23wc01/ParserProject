@@ -14,15 +14,15 @@ To use, firist download the source code. In your preferred terminal run:
 The grammar then be compiled on your machine. Then you can run `python main.py` to generate a parse "tree". 
 
 *Alternative way to generate parse tree...*
-1. Search [online antlr lab](lab.antlr.org)
+1. Search [lab.antlr.org](http://lab.antlr.org/)
 2. Click top left "Lexer" tab
 3. Delete everything in Lexer's window
 4. Return to "Parser" tab
 5. Copy & Paste in everything in this repository's "grammar/PythonParser.g4" file
-6. Copy & Paste in any file in "grammar/example/" to antlr lab's right "Input" window  
-7. Click run to parse "tree"
+6. Copy & Paste in any file in this repository's "grammar/example/" folder to antlr lab's right "Input" window  
+7. Click run to generate a parse "tree"
    
-If you'd like to try your own input file, you can create a new python file and write some code *(note that not all python syntax is supported)*, then modify main.py to run your specified file. 
+If you'd like to try your own input file, you can create a new python file and write some code *(note that not all python syntax is supported)*, then modify main.py to run your specified file or paste this into "Input" window of lab.antlr.org website.
 
 
 ## Project Demo
