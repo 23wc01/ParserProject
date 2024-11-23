@@ -19,7 +19,7 @@ The grammar then be compiled on your machine. Then you can run `python main.py` 
 3. Delete everything in Lexer's window
 4. Return to "Parser" tab
 5. Copy & Paste in everything in this repository's "grammar/PythonParser.g4" file
-6. Copy & Paste in any file in this repository's "grammar/example/" folder to antlr lab's right "Input" window  
+6. Copy & Paste in any file in this repository's "grammar/examples/" folder to antlr lab's right "Input" window  
 7. Click run to generate a parse "tree"
    
 If you'd like to try your own input file, you can create a new python file and write some code *(note that not all python syntax is supported)*, then modify main.py to run your specified file or paste this into "Input" window of lab.antlr.org website.
