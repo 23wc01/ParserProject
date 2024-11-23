@@ -78,7 +78,9 @@ conditional_statement: IF condition ':'
     (INDENT* ELIF condition ':' (NEWLINE inner)*)*
     (INDENT* ELSE ':' ((NEWLINE inner)*))?;
 
-condition: '('? (UNARY_LOGIC)? expr (op_compare (UNARY_LOGIC)? expr)? ')'? (BINARY_LOGIC condition)*; 
+condition: unary_condition (BINARY_LOGIC unary_condition)*; 
+
+unary_condition: '('? (UNARY_LOGIC)? expr (op_compare (UNARY_LOGIC)? expr)? ')'?; 
 
 
 
