@@ -1,6 +1,4 @@
-grammar Sample;
-
-
+grammar PythonParser; // Change to "grammar Sample;" if pasting into lab.antlr.org
 
 
 program: (NEWLINE | begin NEWLINE)* endl ;
