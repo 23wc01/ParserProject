@@ -50,7 +50,7 @@ NEQ: '!=';
 
 // Syntax
 NEWLINE: [\r\n]+;
-INDENT: '\t'+;
+INDENT: '\t'+ | '    '+;
 WS : [ ]+ -> skip ;
 
 // Comments
